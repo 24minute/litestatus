@@ -1,0 +1,160 @@
+/* allcategory.css */
+
+/* Basic container styles */
+.all-category {
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f7fc;
+  color: #333;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+/* Header style */
+h1 {
+  text-align: center;
+  font-size: 2.5em;
+  color: #444;
+  margin-bottom: 20px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Controls section for search input */
+.controls {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.search-input {
+  padding: 10px;
+  width: 350px;
+  border-radius: 6px;
+  border: 1px solid #ccd6e3;
+  background-color: #fff;
+  font-size: 16px;
+  transition: border 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: #3f97ff;
+  outline: none;
+}
+
+/* Category Table */
+.category-table-container {
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+.category-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.category-table th,
+.category-table td {
+  padding: 15px;
+  text-align: left;
+}
+
+.category-table th {
+  background-color: #f9f9f9;
+  color: #555;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.category-table td {
+  background-color: #ffffff;
+  color: #666;
+  font-size: 14px;
+}
+
+.category-table tr:nth-child(even) {
+  background-color: #f6f8fb;
+}
+
+.category-table tr:hover {
+  background-color: #f1f7fd;
+}
+
+/* No data row */
+.no-data {
+  text-align: center;
+  font-style: italic;
+  color: #888;
+  padding: 20px;
+}
+
+/* Category row image styling */
+.category-image {
+  max-width: 90px;
+  max-height: 90px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.actions {
+  text-align: center;
+}
+
+.delete-btn,
+.delete-status-btn {
+  padding: 8px 16px;
+  border: none;
+  background-color: #f44336;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.delete-btn:hover,
+.delete-status-btn:hover {
+  background-color: #e53935;
+}
+
+/* Status list styling */
+.status-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.status-list li {
+  margin: 12px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.status-list li button {
+  padding: 6px 12px;
+  border: none;
+  background-color: #00b0ff;
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.status-list li button:hover {
+  background-color: #0091d1;
+}
+
+.status-list li p {
+  margin: 0;
+  font-size: 14px;
+  color: #444;
+}
