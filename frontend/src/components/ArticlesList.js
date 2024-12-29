@@ -2,19 +2,19 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "./styles/articleslist.css";
 
-const ArticlesList = () => {
+const ArticlesList = ({category}) => {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/articles")
+      .get("http://localhost:5000/articles", {params: {category}})
       .then((response) => {
         setArticles(response.data);
       })
       .catch((error) => {
         console.error("There was an error fetching the articles", error);
       });
-  }, []);
+  }, [category]);
 
   // Function to delete an article
   const deleteArticle = (id, imageName) => {

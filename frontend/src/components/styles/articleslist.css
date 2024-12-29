@@ -48,6 +48,8 @@
   /* Slight zoom effect on hover */
 }
 
+
+
 .articles-name {
   font-size: 18px;
   font-weight: bold;
@@ -55,6 +57,16 @@
   color: #333;
   text-decoration: none;
   transition: color 0.3s ease;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  /* Limits text to three lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.5em;
+  /* Adjust this based on your desired line height */
+  max-height: calc(1.5em * 3);
+  /* Ensures a maximum height for 3 lines */
 }
 
 

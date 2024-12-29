@@ -4,15 +4,20 @@ import "./styles/sidebar.css";
 
 const Sidebar = () => {
   return (
-    <div className="sidebar">
+    <div className="sidebar open">
       <ul>
         <li>
           <NavLink to="/admin">Dashboard</NavLink>
         </li>
         <li>
-          <NavLink to="/admin/addarticles">Add Status</NavLink>
+          <NavLink to="/admin/addstatus">Add Status</NavLink>
         </li>
-       
+        <li>
+          <NavLink to="/admin/allstatus">All Category</NavLink>
+        </li>
+        <li>
+          <NavLink to="/admin/users">Users</NavLink>
+        </li>
       </ul>
     </div>
   );

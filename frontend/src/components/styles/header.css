@@ -18,7 +18,7 @@ height: 36px;
  
 }
 
-@media (max-width: 768px) {
+@media (max-width: 854px) {
   .header {
     display: flex;
     align-items: center;

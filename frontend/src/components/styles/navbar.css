@@ -51,7 +51,7 @@
 }
 
 /* Mobile view styles */
-@media (max-width: 768px) {
+@media (max-width: 854px) {
   .navbar-menu {
     display: none;
     flex-direction: column;
@@ -98,7 +98,7 @@
 }
 
 /* Desktop view styles */
-@media (min-width: 769px) {
+@media (min-width: 854px) {
   .menu-toggle {
     display: none;
   }

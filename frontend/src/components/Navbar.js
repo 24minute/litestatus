@@ -55,7 +55,7 @@ const Navbar = () => {
           </li>
           <li>
             <NavLink
-              to="/category"
+              to="/business"
               className={({ isActive }) =>
                 isActive ? "menu-item active" : "menu-item"
               }
@@ -109,6 +109,17 @@ const Navbar = () => {
             </NavLink>
           </li>
         </ul>
+        <li>
+            <NavLink
+              to="/category"
+              className={({ isActive }) =>
+                isActive ? "menu-item active" : "menu-item"
+              }
+              onClick={closeMenu}
+            >
+              Highlights
+            </NavLink>
+          </li>
         <button className="menu-toggle" onClick={toggleMenu}>
           &#9776;
         </button>

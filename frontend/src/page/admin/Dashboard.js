@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./styles/dashboard.css";
 
 const Dashboard = () => {
   const [title, setTitle] = useState("");
@@ -33,9 +34,9 @@ const Dashboard = () => {
   };
 
   return (
-    <div>
+    <div className="dashboard">
       <h2>Add Data</h2>
-      <form onSubmit={handleSubmit}>
+      <form className="add-form" onSubmit={handleSubmit}>
         <div>
           <label>Title</label>
           <input
@@ -55,12 +56,20 @@ const Dashboard = () => {
         </div>
         <div>
           <label>Category</label>
-          <input
-            type="text"
+          <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
             required
-          />
+          >
+            <option value="">Select a category</option>
+            <option value="News">News</option>
+            <option value="Sport">Sport</option>
+            <option value="Business">Business</option>
+            <option value="Litestyle">Lifestyle</option>
+            <option value="Movie">Movie</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Viral">Viral</option>
+          </select>
         </div>
         <div>
           <label>Image</label>
