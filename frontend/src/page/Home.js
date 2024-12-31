@@ -10,7 +10,7 @@ const Home = () => {
   useEffect(() => {
 
     axios
-      .get('http://localhost:5000/data') // Correctly access the environment variable
+      .get('http://178.16.139.17:5000/data') // Correctly access the environment variable
       .then((response) => {
         setData(response.data); // Store the data in the state
       })
@@ -25,7 +25,7 @@ const Home = () => {
 
     // Send the data to the backend via POST request
     axios
-      .post('http://localhost:5000/data', userData)
+      .post('http://178.16.139.17:5000/data', userData)
       .then((response) => {
         console.log('Data submitted successfully');
         setData([...data, userData]); // Optionally, update the data state to reflect new submission
