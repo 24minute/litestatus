@@ -31,6 +31,11 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
+// Example endpoint
+app.get("/", (req, res) => {
+  res.json({ message: "API is working" });
+});
+
 // Helper function: Create JWT token
 const createToken = (user) => {
   const { id, name, role } = user;
@@ -120,19 +125,17 @@ app.post("/addData", upload.single("image"), (req, res) => {
 //   });
 // });
 
-
-app.get('/articles', (req, res) => {
+app.get("/articles", (req, res) => {
   const { category } = req.query; // Accept category as a query parameter
   const query = category
-      ? 'SELECT * FROM articles WHERE category = ?'
-      : 'SELECT * FROM articles';
+    ? "SELECT * FROM articles WHERE category = ?"
+    : "SELECT * FROM articles";
 
   db.query(query, [category], (err, results) => {
-      if (err) throw err;
-      res.json(results);
+    if (err) throw err;
+    res.json(results);
   });
 });
-
 
 app.get("/articles/:id", (req, res) => {
   const { id } = req.params;
