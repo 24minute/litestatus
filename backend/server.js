@@ -38,7 +38,6 @@ const createToken = (user) => {
   return jwt.sign({ id, name, role }, secret, { expiresIn: "1h" });
 };
 
-  
 // Route: Register User
 app.post("/api/register", async (req, res) => {
   const { name, email, password, role } = req.body;
@@ -69,7 +68,7 @@ app.post("/api/register", async (req, res) => {
 });
 
 // Route: Login User
-app.post("/login", (req, res) => {
+app.post("/api/login", (req, res) => {
   const { email, password } = req.body;
 
   db.query(
@@ -98,7 +97,7 @@ app.post("/login", (req, res) => {
 });
 
 // API to insert data
-app.post("/addData", upload.single("image"), (req, res) => {
+app.post("/api/addData", upload.single("image"), (req, res) => {
   const { title, description, category } = req.body;
   const image = req.file ? req.file.filename : null;
 
@@ -113,7 +112,7 @@ app.post("/addData", upload.single("image"), (req, res) => {
   });
 });
 
-app.get("/articles", (req, res) => {
+app.get("/api/articles", (req, res) => {
   const { category } = req.query; // Accept category as a query parameter
   const query = category
     ? "SELECT * FROM articles WHERE category = ? ORDER BY created_at DESC" // Assuming 'created_at' is the column storing the article creation date
@@ -125,7 +124,7 @@ app.get("/articles", (req, res) => {
   });
 });
 
-app.get("/articles/:id", (req, res) => {
+app.get("/api/articles/:id", (req, res) => {
   const { id } = req.params;
   const query = "SELECT * FROM articles WHERE id = ?";
 
@@ -141,7 +140,7 @@ app.get("/articles/:id", (req, res) => {
   });
 });
 
-app.delete("/articles/:id", (req, res) => {
+app.delete("/api/articles/:id", (req, res) => {
   const articleId = req.params.id;
 
   // Query to fetch the article's image name
@@ -177,7 +176,7 @@ app.delete("/articles/:id", (req, res) => {
 ////////////// status ////////////
 
 // Route to fetch categories with optional search
-app.get("/category", (req, res) => {
+app.get("/api/category", (req, res) => {
   const searchQuery = req.query.q || ""; // Get search term from query parameter, default to empty string
 
   const query = `
@@ -199,7 +198,7 @@ app.get("/category", (req, res) => {
 });
 
 // Route to upload a new category with an image
-app.post("/category", upload.single("image"), (req, res) => {
+app.post("/api/category", upload.single("image"), (req, res) => {
   const { title } = req.body; // Assuming 'title' is part of the form data
   const image = req.file ? req.file.filename : null; // Get the uploaded image filename
 
@@ -219,7 +218,7 @@ app.post("/category", upload.single("image"), (req, res) => {
 });
 
 // Route to get statuses by category ID
-app.get("/category/:id/status", async (req, res) => {
+app.get("/api/category/:id/status", async (req, res) => {
   const categoryId = req.params.id;
 
   try {
@@ -243,7 +242,7 @@ app.get("/category/:id/status", async (req, res) => {
 });
 
 // Route to upload a new status for a category
-app.post("/status", upload.single("image"), (req, res) => {
+app.post("/api/status", upload.single("image"), (req, res) => {
   const { categoryId, title } = req.body; // Assuming 'categoryId' and 'title' are part of the form data
   const statusImage = req.file ? req.file.filename : null; // Get the uploaded status image filename
 
@@ -265,7 +264,7 @@ app.post("/status", upload.single("image"), (req, res) => {
 ////////////////////// Delete category ////////////////////
 
 // Route to delete a specific status and its image
-app.delete("/status/:id", async (req, res) => {
+app.delete("/api/status/:id", async (req, res) => {
   const statusId = req.params.id;
 
   try {
@@ -295,7 +294,7 @@ app.delete("/status/:id", async (req, res) => {
 });
 
 // Route to delete a category and all associated statuses and their images
-app.delete("/category/:id", async (req, res) => {
+app.delete("/api/category/:id", async (req, res) => {
   const categoryId = req.params.id;
 
   try {
@@ -370,13 +369,8 @@ const deleteOldStatuses = () => {
 // Run deletion every 24 hours (86400000 milliseconds)
 setInterval(deleteOldStatuses, 24 * 60 * 60 * 1000);
 
-///////////////////////
-// Endpoint to fetch user details
-
-// Endpoint to fetch user data
-
 // Endpoint to fetch all users
-app.get("/users", (req, res) => {
+app.get("/api/users", (req, res) => {
   const query = "SELECT name, email, password FROM users";
   db.query(query, (err, results) => {
     if (err) {
@@ -389,7 +383,7 @@ app.get("/users", (req, res) => {
 });
 
 // Route to fetch the total number of users
-app.get("/users/count", async (req, res) => {
+app.get("/api/users/count", async (req, res) => {
   try {
     const [result] = await db
       .promise()
@@ -404,7 +398,7 @@ app.get("/users/count", async (req, res) => {
 ///// Contact Us /////
 
 // POST endpoint to save contact form submissions
-app.post("/contact", (req, res) => {
+app.post("/api/contact", (req, res) => {
   const { name, email, message } = req.body;
 
   if (!name || !email || !message) {
@@ -423,7 +417,7 @@ app.post("/contact", (req, res) => {
 });
 
 // Serve the uploads folder for images (static files)
-app.use("/uploads", express.static("uploads"));
+app.use("/api/uploads", express.static("uploads"));
 
 // Start the server
 app.listen(PORT, () => {

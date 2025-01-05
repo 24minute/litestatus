@@ -82,17 +82,22 @@
 
   .close-menu {
     display: block;
-    font-size: 30px;
+    font-size: 39px;
     background: none;
     border: none;
     color: black;
     cursor: pointer;
     align-self: flex-end;
-    margin-bottom: 20px;
+    margin: 16px 16px 0px 0px;
   }
 
   .navbar-menu li {
     margin: 9px 0px;
+  }
+
+  .menu-item.active {
+  
+    border-bottom: none;
   }
 
 }
