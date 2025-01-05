@@ -13,7 +13,7 @@ const path = require("path");
 const fs = require("fs");
 
 const app = express();
-const PORT = process.env.PORT ;
+const PORT = process.env.PORT;
 
 // Middleware
 app.use(cors());
@@ -38,8 +38,9 @@ const createToken = (user) => {
   return jwt.sign({ id, name, role }, secret, { expiresIn: "1h" });
 };
 
+  
 // Route: Register User
-app.post("/register", async (req, res) => {
+app.post("/api/register", async (req, res) => {
   const { name, email, password, role } = req.body;
 
   try {
@@ -112,23 +113,17 @@ app.post("/addData", upload.single("image"), (req, res) => {
   });
 });
 
-
-
-
-
-app.get('/articles', (req, res) => {
+app.get("/articles", (req, res) => {
   const { category } = req.query; // Accept category as a query parameter
   const query = category
-      ? 'SELECT * FROM articles WHERE category = ? ORDER BY created_at DESC' // Assuming 'created_at' is the column storing the article creation date
-      : 'SELECT * FROM articles ORDER BY created_at DESC'; // Sorting all articles by created_at in descending order
+    ? "SELECT * FROM articles WHERE category = ? ORDER BY created_at DESC" // Assuming 'created_at' is the column storing the article creation date
+    : "SELECT * FROM articles ORDER BY created_at DESC"; // Sorting all articles by created_at in descending order
 
   db.query(query, [category], (err, results) => {
-      if (err) throw err;
-      res.json(results);
+    if (err) throw err;
+    res.json(results);
   });
 });
-
-
 
 app.get("/articles/:id", (req, res) => {
   const { id } = req.params;
@@ -266,7 +261,6 @@ app.post("/status", upload.single("image"), (req, res) => {
     res.status(201).send("Status created successfully");
   });
 });
-
 
 ////////////////////// Delete category ////////////////////
 
@@ -407,10 +401,7 @@ app.get("/users/count", async (req, res) => {
   }
 });
 
-
-
 ///// Contact Us /////
-
 
 // POST endpoint to save contact form submissions
 app.post("/contact", (req, res) => {
@@ -430,7 +421,6 @@ app.post("/contact", (req, res) => {
     res.status(201).json({ message: "Your message has been sent!" });
   });
 });
-
 
 // Serve the uploads folder for images (static files)
 app.use("/uploads", express.static("uploads"));
