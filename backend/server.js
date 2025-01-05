@@ -417,7 +417,7 @@ app.post("/api/contact", (req, res) => {
 });
 
 // Serve the uploads folder for images (static files)
-app.use("/api/uploads", express.static("uploads"));
+app.use("/uploads", express.static("uploads"));
 
 // Start the server
 app.listen(PORT, () => {
