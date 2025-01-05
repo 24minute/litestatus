@@ -12,6 +12,7 @@ const Header = () => {
         <Link to="/" className="logo">
          <img src={logo} alt="logo"/>
         </Link>
+        <h1>Ajay</h1>
       </div>
 
       {/* Navbar on the right */}
