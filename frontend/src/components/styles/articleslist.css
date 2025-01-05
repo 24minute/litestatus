@@ -1,0 +1,95 @@
+.articles-page {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.articles-item {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.articles-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px;
+  color: #000000;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  /* Limits text to three lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.articles-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.articles-image {
+  width: 100%;
+  height: 200px;
+  /* Fixed height for the image */
+  object-fit: cover;
+  /* Ensures the image maintains its aspect ratio */
+  transition: transform 0.3s ease;
+}
+
+.articles-item:hover .articles-image {
+  transform: scale(1.05);
+  /* Slight zoom effect on hover */
+}
+
+
+
+.articles-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px;
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  /* Limits text to three lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.5em;
+  /* Adjust this based on your desired line height */
+  max-height: calc(1.5em * 3);
+  /* Ensures a maximum height for 3 lines */
+}
+
+
+.articles-price {
+  font-size: 14px;
+  color: #777;
+  margin: 10px;
+  line-height: 1.5;
+  height: 60px;
+  /* Fixed height to maintain consistency */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* Add ellipsis if description is too long */
+}
+
+@media (max-width: 768px) {
+  .articles-page {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    /* Smaller grid on smaller screens */
+  }
+
+  .articles-image {
+    height: 150px;
+    /* Adjust image height on smaller screens */
+  }
+}
