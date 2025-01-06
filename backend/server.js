@@ -19,6 +19,8 @@ const PORT = process.env.PORT;
 app.use(cors());
 app.use(bodyParser.json());
 
+
+
 // Multer configuration
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -29,7 +31,7 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage });
+const upload = multer({ storage: storage });
 
 // Helper function: Create JWT token
 const createToken = (user) => {
@@ -139,6 +141,7 @@ app.get("/api/articles/:id", (req, res) => {
     res.json(results[0]); // Return the article as JSON
   });
 });
+
 
 app.delete("/api/articles/:id", (req, res) => {
   const articleId = req.params.id;
@@ -417,7 +420,7 @@ app.post("/api/contact", (req, res) => {
 });
 
 // Serve the uploads folder for images (static files)
-app.use("/uploads", express.static("uploads"));
+app.use("/api/uploads", express.static("uploads"));
 
 // Start the server
 app.listen(PORT, () => {
