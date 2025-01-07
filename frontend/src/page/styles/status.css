@@ -6,7 +6,6 @@
   background-color: #f5f5f5;
 }
 
-
 .status-loading,
 .status-error {
   font-size: 18px;
@@ -37,8 +36,6 @@
   /* Prevent overflow for large images */
 }
 
-
-
 /* Styling for the status image */
 .status-image {
   width: 100%;
@@ -47,10 +44,6 @@
   /* Contain image within the container */
   display: block;
 }
-
-
-
-
 
 /* Status title overlay */
 .status-title {
@@ -107,7 +100,6 @@
   right: 15px;
 }
 
-
 /* Dots Navigation */
 .status-dots {
   position: absolute;
@@ -133,8 +125,6 @@
 .status-dot.active {
   background-color: #ff7043;
 }
-
-
 
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {

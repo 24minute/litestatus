@@ -67,9 +67,14 @@ const Status = () => {
                 alt={status[currentIndex].statusTitle}
                 className="status-image"
               />
+
               <h3 className="status-title">
                 {status[currentIndex].statusTitle}
               </h3>
+
+       
+
+
             </div>
           ) : (
             <div className="status-error">
